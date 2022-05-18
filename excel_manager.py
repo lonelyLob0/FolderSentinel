@@ -6,10 +6,18 @@ from openpyxl import Workbook, load_workbook
 class ExcelManager:
     """a"""
 
+    def __init__(self):
+        self.__master_file_path = ""
+
+    @property
+    def get_master_path(self):
+        """a"""
+        return self.__master_file_path
+
     def create_master_workflow(self, folder_path):
         """a"""
         master_directory_path = folder_path + r"\Master"
-        master_file_path = master_directory_path + r"\master.xlsx"
+        self.__master_file_path = master_directory_path + r"\master.xlsx"
 
         if not FolderManager.directory_exists(master_directory_path):
 
@@ -18,7 +26,7 @@ class ExcelManager:
 
             wb = Workbook()
             wb.active.title = "Summary"
-            wb.save(filename=master_file_path)
+            wb.save(filename=self.__master_file_path)
             wb.close()
 
     def consolidate_excel_file_in_target(self, origin_path, target_path):
