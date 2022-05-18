@@ -23,7 +23,6 @@ class ExcelManager:
 
     def consolidate_excel_file_in_target(self, origin_path, target_path):
         """a"""
-        print(origin_path)
         origin_wb = load_workbook(origin_path)
         target_wb = load_workbook(target_path)
 

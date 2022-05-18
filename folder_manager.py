@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import shutil
 
 class FolderManager:
     """a"""
@@ -17,6 +18,7 @@ class FolderManager:
         new_folder = self.folder_path / directory_name
         if not __class__.directory_exists(new_folder):
             os.mkdir(new_folder)
+        return new_folder
 
     def are_there_new_files(self):
         """a"""
@@ -28,3 +30,13 @@ class FolderManager:
         files = [p for p in self.folder_path.glob("*.xlsx")]
         return files if len(files) > 0 else None
 
+    def get_all_files(self):
+        """a"""
+        files = [p for p in self.folder_path.glob("*")]
+        return files if len(files) > 0 else None
+
+    @staticmethod
+    def move_files_to_directory(*files,directory_path):
+        """a"""
+        for file in files:
+            shutil.move(file,directory_path)
