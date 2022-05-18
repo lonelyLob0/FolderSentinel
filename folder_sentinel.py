@@ -1,5 +1,6 @@
-from scheduler import Scheduler
-import datetime as date_time
+import schedule
+import time
+
 
 class FolderSentinel:
     """a"""
@@ -7,13 +8,16 @@ class FolderSentinel:
     def __init__(self, folder_path):
         """a"""
         self.folder_path = folder_path
-        self.schedule = Scheduler()
 
     def start(self):
         """a"""
         print('Folder sentinal has started')
-        self.schedule.minutely(date_time.time(second=3),
-                               self.__check_folder_changes())
+        schedule.every(10).seconds.do(
+            self.__check_folder_changes)
+
+        while True:
+            schedule.run_pending()
+            time.sleep(1)
 
     def __check_folder_changes(self):
         """a"""

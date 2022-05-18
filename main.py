@@ -1,5 +1,6 @@
 from folder_sentinel import FolderSentinel
+import time
 
-sentinel = FolderSentinel('nani')
+sentinel = FolderSentinel('test')
 
 sentinel.start()
