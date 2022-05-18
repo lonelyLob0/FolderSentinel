@@ -7,10 +7,15 @@ class FolderManager:
         """a"""
         self.folder_path =Path(folder_path)
 
+    @staticmethod
+    def directory_exists(directory_path):
+        """a"""
+        return os.path.isdir(directory_path)
+
     def create_directory(self,directory_name):
         """a"""
         new_folder = self.folder_path / directory_name
-        if not os.path.isdir(new_folder):
+        if not __class__.directory_exists(new_folder):
             os.mkdir(new_folder)
 
     def are_there_new_files(self):
@@ -22,3 +27,4 @@ class FolderManager:
         """a"""
         files = [p for p in self.folder_path.glob("*.xlsx")]
         return files if len(files) > 0 else None
+
