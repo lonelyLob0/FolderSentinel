@@ -1,4 +1,3 @@
-from tomli import load
 from folder_manager import FolderManager
 from openpyxl import Workbook, load_workbook
 
